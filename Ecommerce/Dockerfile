@@ -3,12 +3,17 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy inner project files
-COPY Ecommerce/package*.json ./
+# Copy package files
+COPY package*.json ./
+
 RUN npm install
 
-COPY Ecommerce/ .
+# Copy rest of app
+COPY . .
+
+# Build app
 RUN npm run build
+
 
 # ---------- Production Stage ----------
 FROM nginx:alpine
