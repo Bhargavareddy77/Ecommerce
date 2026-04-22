@@ -3,15 +3,12 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
 
-RUN npm install
+RUN npm install --include=optional
 
-# Copy rest of app
 COPY . .
 
-# Build app
 RUN npm run build
 
 
