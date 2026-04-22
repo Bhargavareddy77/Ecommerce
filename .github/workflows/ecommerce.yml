@@ -14,7 +14,7 @@ jobs:
       - name: Clone code
         uses: actions/checkout@v4
 
-      - name: Show files (debug)
+      - name: Debug files
         run: ls -R
 
       - name: Docker login
